@@ -7,7 +7,9 @@
     <title>To Do List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
 
 
 </head>
@@ -17,8 +19,28 @@
     <div class="body-container">
         <div class="list-container">
             <div class="list-header">
-                <span><button class="create-element">Create a new element</button> </span>
-
+                <span>
+                    <button class="create-element">Create a new element <i class="fa fa-pencil-square" aria-hidden="true"></i></button>
+                </span>
+            </div>
+            <div class="list-body">
+                <div class="list-item-container">
+                    <ul class="list-item">
+                        <li class="task-definition">
+                                Take out the trash
+                        </li><!--
+                        --><li class="task-due">
+                            23:59, 15-11-2018
+                        </li><!--
+                        --><li class="task-description">
+                            Take out the trash until given date
+                        </li>
+                        
+                    </ul>
+                    <span class="delete">
+                        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    </span>
+                </div>
 
             </div>
         </div>
@@ -28,6 +50,7 @@
 
 
 
+    <script src="main.js"></script>
 </body>
 
 </html>
