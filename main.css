@@ -3,7 +3,7 @@ margin: 0;
 padding: 0;
 font-family: 'Nunito', sans-serif;
 overflow: auto;
-
+color: #222;
 
 }
 .bg{
@@ -36,12 +36,47 @@ overflow: auto;
     z-index: 999;
     background: white;
 }
+.head{
+    margin: 0 auto;
+    max-width: 70%;
+}
 .title{
     text-align: center;
     margin-top: 2rem;       
 }
+.secondary-title{
+    text-align: center;
+margin-top: 1rem;
+}
+.border{
+    border-bottom: 1px solid rgb(134, 134, 134);
+    margin-top: 0.2rem;
+}
 #time{
     text-align: center;
+    margin-top: 1rem;
+}
+
+.list-container{
+    display: block;
+    position: absolute;
+    width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: rgba(255,255,255,0.6);
+}
+
+table{
+    width: 100%;    
+}
+th{
+    padding: 0.7rem;
+    border-bottom: 1px solid #222;
+}
+td{
+    padding: 0.7rem;
+    border-right: 1px solid #222;
 }
 @keyframes spinner{
    0%{transform: rotate(0deg);}
