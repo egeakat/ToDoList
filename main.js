@@ -7,9 +7,10 @@ window.onload = function(){
         displayClock(time, getClock(date));
     }, 50);
     
-}
+};
 
 
 
 let getClock = (date) => String(date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds();
 let displayClock = (time, date) => time.innerHTML = date;
+
