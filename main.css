@@ -117,6 +117,18 @@ td:first-of-type{
     text-decoration: line-through;
     background-color: rgba(78, 255, 24, 0.4);
 }
+#add{
+    color: rgba(255,255,255,0.9);
+    padding: 0.5rem;
+    border-radius: 10px;
+    text-align: center;
+    background: #222;
+}
+#add:hover{
+    background: rgba(34,34,34, 0.8);
+    color: rgba(255,255,255,1);
+    cursor: pointer; 
+}
 #add-task{
     color: rgba(255,255,255,0.9);
     display: block;
@@ -131,6 +143,9 @@ td:first-of-type{
     background: rgba(34,34,34, 0.8);
     color: rgba(255,255,255,1);
     cursor: pointer; 
+}
+textarea{
+    resize: none;
 }
 
 
