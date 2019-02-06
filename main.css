@@ -67,6 +67,7 @@ margin-top: 1rem;
     transform: translate(-50%,0);
     background-color: rgba(255,255,255,0.7);
     padding: 2rem;
+    overflow: visible;
 }
 
 table{
@@ -74,6 +75,8 @@ table{
 }
 tr{
     transition: all 0.8s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    /*background-color: rgba(78, 255, 24, 0.473);*/
+
 }
 th{
     padding: 0.7rem;
@@ -93,10 +96,41 @@ td:first-of-type{
 
 .complete, .erase{
     display: inline-block;
+    transition: all 0.3s ease;
 } 
 .complete{
     font-size: 1.1rem;
     margin-right: 0.5rem;
+}
+.erase:hover{
+    color: rgba(255, 70, 70, 0.836);
+    cursor: pointer;
+    font-size: 1.1rem;
+
+}
+.complete:hover{
+    color: rgba(78, 255, 24, 0.932);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+.task-completed{
+    text-decoration: line-through;
+    background-color: rgba(78, 255, 24, 0.4);
+}
+#add-task{
+    color: rgba(255,255,255,0.9);
+    display: block;
+    width: 8rem;
+    margin-top: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    text-align: center;
+    background: #222;
+}
+#add-task:hover{
+    background: rgba(34,34,34, 0.8);
+    color: rgba(255,255,255,1);
+    cursor: pointer; 
 }
 
 

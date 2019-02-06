@@ -7,7 +7,16 @@ window.onload = function(){
         displayClock(time, getClock(date));
     }, 50);
     
+let addTask = document.getElementById("add-task");
+
+taskNode = document.createElement("tr");
+console.log(taskNode);
+/*
+addTask.onclick = function(){
+    
+}*/
 };
+
 
 
 
