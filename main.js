@@ -38,6 +38,7 @@ addTask.onclick = function(){
 
     addButton.id = "add";
     addButton.innerHTML = "Add";
+    addButton.addEventListener("click", addBeep);
     td1.appendChild(txtTask);
     td2.appendChild(txtDue);
     td3.appendChild(addButton);
@@ -49,16 +50,14 @@ addTask.onclick = function(){
     
 };
 
-add.onclick = function(){
-  //  console.log(txtSays.value);
-};
-
 
 
 };
 
 
-
+function addBeep(){
+    console.log("Beep bop added");
+}
 
 let getClock = (date) => String(date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds();
 let displayClock = (time, date) => time.innerHTML = date;
