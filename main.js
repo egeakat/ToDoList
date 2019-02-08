@@ -37,7 +37,7 @@ window.onload = function () {
 
         addButton.id = "add";
         addButton.innerHTML = "Add";
-        addButton.addEventListener("click", addBeep);
+        addButton.addEventListener("click", addTaskPerm);
         td1.appendChild(txtTask);
         td2.appendChild(txtDue);
         td3.appendChild(addButton);
@@ -51,20 +51,48 @@ window.onload = function () {
     };
 
 
-    function addBeep() {
+    function addTaskPerm() {
         let taskName = document.getElementById( "add-id-Task");
         let taskDue = document.getElementById("add-id-Due");
         let nodeArray = [];
-
-
-        for(let j= 0; j<3; j++){
-        nodeArray[j] = document.createElement("td");
-        }
-        nodeArray[0].innerHTML = taskName.value;
-        nodeArray[1].innerHTML = taskDue
+        let divErase = document.createElement("div");
+        let divComplete = document.createElement("div");
+        let trNode = document.createElement("tr");
+        trNode.id = String(i++);
+        let table = document.getElementById("table");
         
-
+        
+        for(let j= 0; j<4; j++){
+        nodeArray[j] = document.createElement("td");
+        console.log(nodeArray[j]);
+        }
+        
+        nodeArray[0].innerHTML = taskName.value;
+        nodeArray[1].innerHTML = taskDue.value;
+        nodeArray[2].innerHTML = "Not Done";
+        nodeArray[3].classList.add("options");
     
+        for(let j= 0; j<4; j++){
+            console.log(nodeArray[j].innerHTML);
+            }
+        divErase.classList.add("erase");
+        divErase.dataDelete = String(i);
+        divErase.innerHTML = "X";
+    
+        divComplete.classList.add("complete");
+        divComplete.dataComplete = String(i);
+        divComplete.innerHTML = "✓";
+        table.removeChild(table.lastChild);
+        nodeArray[3].appendChild(divComplete);
+        nodeArray[3].appendChild(divErase);
+
+        for(let k = 0; k <4; k++){
+            trNode.appendChild(nodeArray[k]);
+
+        }
+        table.appendChild(trNode);
+
+        taskIsActive = false;
     }
     
 
