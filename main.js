@@ -62,19 +62,21 @@ window.onload = function () {
         let table = document.getElementById("table");
         
         
+        
+        let bg = document.getElementsByClassName("bg")[0];
+
+
         for(let j= 0; j<4; j++){
         nodeArray[j] = document.createElement("td");
-        console.log(nodeArray[j]);
         }
+
         
         nodeArray[0].innerHTML = taskName.value;
         nodeArray[1].innerHTML = taskDue.value;
         nodeArray[2].innerHTML = "Not Done";
         nodeArray[3].classList.add("options");
     
-        for(let j= 0; j<4; j++){
-            console.log(nodeArray[j].innerHTML);
-            }
+        
         divErase.classList.add("erase");
         divErase.dataDelete = String(i);
         divErase.innerHTML = "X";
@@ -83,15 +85,20 @@ window.onload = function () {
         divComplete.dataComplete = String(i);
         divComplete.innerHTML = "✓";
         table.removeChild(table.lastChild);
+        heightBefore = table.clientHeight;        
+
+
         nodeArray[3].appendChild(divComplete);
         nodeArray[3].appendChild(divErase);
-
         for(let k = 0; k <4; k++){
             trNode.appendChild(nodeArray[k]);
 
         }
         table.appendChild(trNode);
+        
+        bg.style.height = String( bg.clientHeight +  table.clientHeight - heightBefore) + "px";
 
+        console.log(bg.clientHeight);
         taskIsActive = false;
     }
     
@@ -102,3 +109,12 @@ window.onload = function () {
 
 let getClock = (date) => String(date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds();
 let displayClock = (time, date) => time.innerHTML = date;
+
+function LetsPreventSomeXSS(str){
+    for(let ctr = 0; ctr < this.length; ctr++){
+
+
+
+
+    }
+}
