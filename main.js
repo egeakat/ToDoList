@@ -71,8 +71,8 @@ window.onload = function () {
         }
 
         
-        nodeArray[0].innerHTML = taskName.value;
-        nodeArray[1].innerHTML = taskDue.value;
+        nodeArray[0].innerHTML = escapeLess(taskName.value);
+        nodeArray[1].innerHTML = escapeLess(taskDue.value);
         nodeArray[2].innerHTML = "Not Done";
         nodeArray[3].classList.add("options");
     
@@ -98,7 +98,6 @@ window.onload = function () {
         
         bg.style.height = String( bg.clientHeight +  table.clientHeight - heightBefore) + "px";
 
-        console.log(bg.clientHeight);
         taskIsActive = false;
     }
     
@@ -110,11 +109,21 @@ window.onload = function () {
 let getClock = (date) => String(date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds();
 let displayClock = (time, date) => time.innerHTML = date;
 
-function LetsPreventSomeXSS(str){
-    for(let ctr = 0; ctr < this.length; ctr++){
-
+function escapeLess(str){
+    strClean = "";
+    for(let ctr = 0; ctr < str.length; ctr++){
+        if(str[ctr] ==  "<"){
+            strClean+= "&lt";
+            }
+        else{
+            strClean += str[ctr];
+        }
 
 
 
     }
+    return strClean;
 }
+
+
+
