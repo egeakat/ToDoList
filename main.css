@@ -158,3 +158,31 @@ textarea{
    100%{transform: rotate(360deg);}
 
 }
+
+@media screen and (max-width: 900px){
+    table{
+        font-size: 0.8rem;
+    }
+   
+    textarea{
+        width: 3rem;
+    }
+    td{
+        padding: 0.2rem;
+        font-size: 0.7rem;
+        max-width: 2rem;
+        word-wrap: break-word
+        }
+    .bg{
+        background-attachment: scroll;
+    }
+    #add{
+        padding: 0.2rem;
+    }
+
+.list-container{
+    width: 80%;
+    padding: 0.7rem;
+    top: 70%;
+}
+}
