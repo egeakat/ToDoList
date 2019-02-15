@@ -78,12 +78,15 @@ window.onload = function () {
     
         
         divErase.classList.add("erase");
-        divComplete.setAttribute("dataDelete", String(i));
+        divErase.setAttribute("dataDelete", String(i));
         divErase.innerHTML = "X";
-    
+        divErase.addEventListener("click", deleteTask);
+
         divComplete.classList.add("complete");
         divComplete.setAttribute("dataComplete", String(i));
         divComplete.innerHTML = "✓";
+        divComplete.addEventListener("click", completeTask);
+
         table.removeChild(table.lastChild);
         heightBefore = table.clientHeight;        
 
@@ -125,5 +128,17 @@ function escapeLess(str){
     return strClean;
 }
 
+function deleteTask(){
+    let nodeToDeleteId = this.attributes.datadelete.value -1;
+    console.log(nodeToDeleteId);
 
+    let nodeToDelete = document.getElementById(nodeToDeleteId);
+    console.log(nodeToDelete);
+
+    nodeToDelete.parentNode.removeChild(nodeToDelete);
+}
+
+function completeTask(){
+
+}
 
