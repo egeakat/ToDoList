@@ -78,11 +78,11 @@ window.onload = function () {
     
         
         divErase.classList.add("erase");
-        divErase.dataDelete = String(i);
+        divComplete.setAttribute("dataDelete", String(i));
         divErase.innerHTML = "X";
     
         divComplete.classList.add("complete");
-        divComplete.dataComplete = String(i);
+        divComplete.setAttribute("dataComplete", String(i));
         divComplete.innerHTML = "✓";
         table.removeChild(table.lastChild);
         heightBefore = table.clientHeight;        
