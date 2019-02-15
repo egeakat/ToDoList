@@ -83,6 +83,7 @@ th{
     border-bottom: 1px solid #222;
 }
 td{
+    transition: all 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
     padding: 0.7rem;
 
 }

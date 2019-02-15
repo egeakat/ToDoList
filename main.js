@@ -33,7 +33,8 @@ window.onload = function () {
         txtDue.cols = "20";
 
         txtTask.rows = "1";
-        txtDue.rows = "1";
+        txtDue.rows = "1";   
+
 
         addButton.id = "add";
         addButton.innerHTML = "Add";
@@ -73,6 +74,10 @@ window.onload = function () {
         
         nodeArray[0].innerHTML = escapeLess(taskName.value);
         nodeArray[1].innerHTML = escapeLess(taskDue.value);
+        if(taskName.value === "" || taskDue.value === ""){
+            alert("Plese fill out the required fields");
+            return false;
+        }
         nodeArray[2].innerHTML = "Not Done";
         nodeArray[3].classList.add("options");
     
@@ -130,15 +135,20 @@ function escapeLess(str){
 
 function deleteTask(){
     let nodeToDeleteId = this.attributes.datadelete.value -1;
-    console.log(nodeToDeleteId);
-
     let nodeToDelete = document.getElementById(nodeToDeleteId);
-    console.log(nodeToDelete);
 
     nodeToDelete.parentNode.removeChild(nodeToDelete);
 }
 
 function completeTask(){
+    let nodeToCompleteId = this.attributes.datacomplete.value - 1;
+    let nodeToComplete = document.getElementById(nodeToCompleteId);
 
+    for(let ctr = 0; ctr<3; ctr++ ){
+        nodeToComplete.cells[ctr].classList.add("task-completed");
+        if(ctr==2){
+            nodeToComplete.cells[ctr].innerHTML = "Done !";
+        }
+    }
 }
 
