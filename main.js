@@ -1,23 +1,31 @@
 window.onload = function () {
+    // This is where we destroy the loader when the page loads
     let loader = document.getElementsByClassName("load")[0];
     loader.style.display = "none";
+    
+    //this is where we update the clock
     let time = document.getElementById("time");
     setInterval(function () {
         let date = new Date();
         displayClock(time, getClock(date));
     }, 50);
 
+
     let addTask = document.getElementById("add-task");
     let add = document.getElementById("add");
+    //counter i to keep track of the number of elements we are creating 
     let i = 0;
     
     let table = document.getElementById("table");
+    //variable to see if we have an active task before adding one
     let taskIsActive = false
     addTask.onclick = function () {
         if (taskIsActive) {
             alert("Please fill out the task before adding a new one");
             return false;
         }
+
+        //creating the nodes needed
         let taskNode = document.createElement("tr");
         let addButton = document.createElement("span");
 
@@ -39,7 +47,9 @@ window.onload = function () {
 
         addButton.id = "add";
         addButton.innerHTML = "Add";
+        //event listener to add the tasks permanently
         addButton.addEventListener("click", addTaskPerm);
+        
         td1.appendChild(txtTask);
         td2.appendChild(txtDue);
         td3.appendChild(addButton);
@@ -47,6 +57,8 @@ window.onload = function () {
         taskNode.appendChild(td2);
         taskNode.appendChild(td3);
         table.appendChild(taskNode);
+       
+       //focus on the input
         txtTask.focus();
 
        
@@ -56,6 +68,8 @@ window.onload = function () {
 
 
     function addTaskPerm() {
+
+        //fetching the elements and creating the nodes
         let taskName = document.getElementById( "add-id-Task");
         let taskDue = document.getElementById("add-id-Due");
         let nodeArray = [];
@@ -75,7 +89,7 @@ window.onload = function () {
         nodeArray[j] = document.createElement("td");
         }
 
-        
+        //we don't want any xss 
         nodeArray[0].innerHTML = escapeLess(taskName.value);
         nodeArray[1].innerHTML = escapeLess(taskDue.value);
         if(taskName.value === "" || taskDue.value === ""){
@@ -86,7 +100,7 @@ window.onload = function () {
         nodeArray[2].innerHTML = "Not Done";
         nodeArray[3].classList.add("options");
     
-        
+        //Creating the adding and deleting features and nodes
         divErase.classList.add("erase");
         divErase.setAttribute("dataDelete", String(i));
         divErase.innerHTML = "X";
@@ -98,6 +112,7 @@ window.onload = function () {
         divComplete.addEventListener("click", completeTask);
 
         table.removeChild(table.lastChild);
+        //see a few line below
         heightBefore = table.clientHeight;        
 
 
@@ -109,9 +124,11 @@ window.onload = function () {
         }
         table.appendChild(trNode);
         
-        bg.style.height = String( bg.clientHeight +  table.clientHeight - heightBefore) + "px";
+        // we need to increase the height of the background so we don't run out of area when we add too many tasks
+        bg.style.height = String(35 + bg.clientHeight +  table.clientHeight - heightBefore) + "px";
 
         let taskUpdate = document.getElementById("task-heading");
+        //updating the amount of tasks
         taskUpdate.innerHTML = "Task (" + String(totalCompleted) + "/" + String(total) + " completed)";
     
         taskIsActive = false;
@@ -119,13 +136,15 @@ window.onload = function () {
     
 
 };
+//amount of total and completed tasks
 let total = 0;
 let  totalCompleted = 0;
 
-
+//clock functions
 let getClock = (date) => String(date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds();
 let displayClock = (time, date) => time.innerHTML = date;
 
+//we are escaping the less than character to prevent xss
 function escapeLess(str){
     strClean = "";
     for(let ctr = 0; ctr < str.length; ctr++){
@@ -142,9 +161,16 @@ function escapeLess(str){
     return strClean;
 }
 
+//deleting task function
 function deleteTask(){
     let nodeToDeleteId = this.attributes.datadelete.value -1;
     let nodeToDelete = document.getElementById(nodeToDeleteId);
+
+    let table = document.getElementById("table");
+    let bg = document.getElementsByClassName("bg")[0];
+    heightBefore = table.clientHeight;        
+
+
 
     if(nodeToDelete.cells[0].classList.contains("task-completed")){
         totalCompleted--;
@@ -152,13 +178,17 @@ function deleteTask(){
 
 
     nodeToDelete.parentNode.removeChild(nodeToDelete);
+    
+    bg.style.height = String(35 + bg.clientHeight +  table.clientHeight - heightBefore) + "px";
+    console.log(bg.style.height);
+
     total--;
     let taskUpdate = document.getElementById("task-heading");
     taskUpdate.innerHTML = "Task (" + String(totalCompleted) + "/" + String(total) + " completed)";
    
 
 }
-
+//completing the task function
 function completeTask(){
     let nodeToCompleteId = this.attributes.datacomplete.value - 1;
     let nodeToComplete = document.getElementById(nodeToCompleteId);

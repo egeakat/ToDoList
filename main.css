@@ -7,6 +7,7 @@ color: #222;
 
 }
 .bg{
+    position: relative;
     max-width: 100%;
     background-image: url("img/forest2.jpg");
     min-height: 100vh;
@@ -27,6 +28,8 @@ color: #222;
     top: 50%;
     left: 50%;
     animation: spinner 1.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+    -webkit-animation: spinner 1.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+    -o-animation: spinner 1.5s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;;
 }
 .load{
     position: fixed;
@@ -60,11 +63,10 @@ margin-top: 1rem;
 
 .list-container{
     display: block;
-    position: absolute;
     width: 70%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,0);
+    margin-top: 10rem;
+    margin-left: auto;
+    margin-right: auto;
     background-color: rgba(255,255,255,0.7);
     padding: 2rem;
     overflow: visible;
@@ -75,6 +77,8 @@ table{
 }
 tr{
     transition: all 0.8s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -webkit-transition: all 0.8s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -o-transition: all 0.8s cubic-bezier(0.785, 0.135, 0.15, 0.86);
     /*background-color: rgba(78, 255, 24, 0.473);*/
 
 }
@@ -84,6 +88,8 @@ th{
 }
 td{
     transition: all 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -webkit-transition: all 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    -o-transition: all 1.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
     padding: 0.7rem;
 
 }
@@ -98,6 +104,8 @@ td:first-of-type{
 .complete, .erase{
     display: inline-block;
     transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
 } 
 .complete{
     font-size: 1.1rem;
@@ -151,7 +159,14 @@ textarea{
     border: none;
 }
 
-
+footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    color: white;
+}
 
 @keyframes spinner{
    0%{transform: rotate(0deg);}
@@ -183,6 +198,6 @@ textarea{
 .list-container{
     width: 80%;
     padding: 0.7rem;
-    top: 70%;
+    top: 40%;
 }
 }
