@@ -10,6 +10,7 @@ window.onload = function () {
     let addTask = document.getElementById("add-task");
     let add = document.getElementById("add");
     let i = 0;
+    
     let table = document.getElementById("table");
     let taskIsActive = false
     addTask.onclick = function () {
@@ -46,7 +47,9 @@ window.onload = function () {
         taskNode.appendChild(td2);
         taskNode.appendChild(td3);
         table.appendChild(taskNode);
-        
+        txtTask.focus();
+
+       
         taskIsActive = true;
 
     };
@@ -60,6 +63,7 @@ window.onload = function () {
         let divComplete = document.createElement("div");
         let trNode = document.createElement("tr");
         trNode.id = String(i++);
+
         let table = document.getElementById("table");
         
         
@@ -78,6 +82,7 @@ window.onload = function () {
             alert("Plese fill out the required fields");
             return false;
         }
+        total++;
         nodeArray[2].innerHTML = "Not Done";
         nodeArray[3].classList.add("options");
     
@@ -106,12 +111,16 @@ window.onload = function () {
         
         bg.style.height = String( bg.clientHeight +  table.clientHeight - heightBefore) + "px";
 
+        let taskUpdate = document.getElementById("task-heading");
+        taskUpdate.innerHTML = "Task (" + String(totalCompleted) + "/" + String(total) + " completed)";
+    
         taskIsActive = false;
     }
     
 
 };
-
+let total = 0;
+let  totalCompleted = 0;
 
 
 let getClock = (date) => String(date.getHours()) + ":" + date.getMinutes() + ":" + date.getSeconds();
@@ -137,12 +146,26 @@ function deleteTask(){
     let nodeToDeleteId = this.attributes.datadelete.value -1;
     let nodeToDelete = document.getElementById(nodeToDeleteId);
 
+    if(nodeToDelete.cells[0].classList.contains("task-completed")){
+        totalCompleted--;
+    }
+
+
     nodeToDelete.parentNode.removeChild(nodeToDelete);
+    total--;
+    let taskUpdate = document.getElementById("task-heading");
+    taskUpdate.innerHTML = "Task (" + String(totalCompleted) + "/" + String(total) + " completed)";
+   
+
 }
 
 function completeTask(){
     let nodeToCompleteId = this.attributes.datacomplete.value - 1;
     let nodeToComplete = document.getElementById(nodeToCompleteId);
+
+    if(nodeToComplete.cells[0].classList.contains("task-completed")){
+        return false;
+    }
 
     for(let ctr = 0; ctr<3; ctr++ ){
         nodeToComplete.cells[ctr].classList.add("task-completed");
@@ -150,5 +173,11 @@ function completeTask(){
             nodeToComplete.cells[ctr].innerHTML = "Done !";
         }
     }
+    
+    totalCompleted++;
+
+    let taskUpdate = document.getElementById("task-heading");
+    taskUpdate.innerHTML = "Task (" + String(totalCompleted) + "/" + String(total) + " completed)";
+   
 }
 

@@ -147,6 +147,8 @@ td:first-of-type{
 }
 textarea{
     resize: none;
+    background: rgba(0,0,0,0);
+    border: none;
 }
 
 
